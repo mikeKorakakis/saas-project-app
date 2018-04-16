@@ -15,6 +15,7 @@ gem 'milia', github: 'jekuno/milia', branch: 'issue#76'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
+gem 'bootstrap-datepicker-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
