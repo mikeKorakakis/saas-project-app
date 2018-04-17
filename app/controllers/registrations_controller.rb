@@ -15,7 +15,7 @@ def create
     # have a working copy of the params in case Tenant callbacks
     # make any changes
   tenant_params = sign_up_params_tenant
-  user_params   = sign_up_params_user
+  user_params   = sign_up_params_user.merge({is_admin:true})
   coupon_params = sign_up_params_coupon
 
   sign_out_session!
@@ -31,7 +31,7 @@ def create
         if @tenant.plan == 'premium'
           @payment = Payment.new({email: user_params["email"],
                                  token: params[:payment]["token"],
-                                tenant: @tanant
+                                tenant: @tenant
                       })
           flash[:error] = "Please check registration errors" unless @payment.valid?
           begin
