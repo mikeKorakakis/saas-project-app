@@ -10,14 +10,13 @@ class TenantsController < ApplicationController
 			Tenant.transaction do 
 				if @tenant.update(tenant_params)
 					if @tenant.plan == "premium" && @tenant.payment.blank?
-puts "TOKEN IS: #{params[:payment]["token"]}" 
 						@payment = Payment.new({email: tenant_params["email"],
 							token: params[:payment]["token"],
 							tenant: @tenant})
 						begin @payment.process_payment
 							@payment.save
 						rescue Exception => e
-							flash[:error] = e.message #+ params[:payment]["token"]
+							flash[:error] = e.message 
 							@payment.destroy
 							@tenant.plan = "free"
 							@tenant.save

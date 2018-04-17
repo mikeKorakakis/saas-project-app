@@ -77,7 +77,7 @@ stripeResponseHandler = function(status, response){
 	if (response.error){
 		console.log(response.error.message);
 		show_error(response.error.message);
-		$form.find("input[type=submit").prop("disabled", false);
+		$form.find("input[type=submit]").prop("disabled", false);
 	}else{
 		token = response.id;
 		$form.append($("<input type=\"hidden\" name=\"payment[token]\"/>").val(token));
